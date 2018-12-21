@@ -9,7 +9,7 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="{{ "favicon.ico" | absURL}}" />
+    <link rel="shortcut icon" href="{{ with .Site.Params.Favicon }}{{ . }}{{ else }}{{ "favicon.ico" | absURL}}{{ end }}" />
     <link rel="canonical" href="{{ .Permalink }}" />
 
     {{ if .IsPage }} <meta name="description" content="{{ .Description | default (substr .Summary 0 160) }}" /> {{ else }}
@@ -18,7 +18,7 @@
     {{ partial "meta-twitter" . }}
     {{ partial "meta-facebook" . }}
 
-    {{ .Hugo.Generator }}
+    <!-- {{ .Hugo.Generator }} -->
 
     {{ "<!-- Stylesheets -->" | safeHTML }}
     <link rel="stylesheet" type="text/css" href="{{ "built/screen.css" | absURL}}" /> 
